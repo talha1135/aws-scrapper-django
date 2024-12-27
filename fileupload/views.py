@@ -14,7 +14,7 @@ from openpyxl import Workbook
 from django.http import JsonResponse
 import time
 import shutil
-
+from django.http import FileResponse
 # Initialize logger
 logger = logging.getLogger(__name__)
 
@@ -219,7 +219,21 @@ def scrape_asins(asin_list):
     wb.save(output_path)
 
     # Return the file path for downloading
-    file_path = f"/media/files/{file_name}"
+    file_path = file_name
     logger.info(f"Excel file created at {file_path}")
 
     return {"file_path": file_path}
+
+
+
+
+def download_file(request, filename):
+    # Fix the file path by removing the leading slash
+    file_path = os.path.join(settings.MEDIA_ROOT, 'files', filename)
+
+    # Check if the file exists
+    if os.path.exists(file_path):
+        # Use FileResponse, Django will handle opening and closing the file
+        return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
+    
+    return JsonResponse({'success': False, 'message': 'File not found.'})

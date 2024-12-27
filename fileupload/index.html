@@ -144,11 +144,11 @@
                 document.getElementById('loader').style.display = 'none';
 
                 if (data.success) {
-                    const downloadLink = data.data.downloadLink; // Adjust this based on the server response
+                    const downloadLink = data.processed_file; // Adjust this based on the server response
 
                     document.getElementById('result').innerHTML = `
                         <h3>Process Completed</h3>
-                        <p>Your file has been processed. <a href="http://localhost:8000/api/download/${downloadLink}" download>Click here to download your file.</a></p>
+                        <p>Your file has been processed. <a href="/api/download/${downloadLink}" download>Click here to download your file.</a></p>
                     `;
                 } else {
                     document.getElementById('result').innerHTML = `<p>${data.message}</p>`;
