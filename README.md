@@ -1,5 +1,5 @@
 
-# File Upload & Scraping Amazoe Products - Django
+# File Upload & Scraping Amazone Products - Django
 
 This project is a simple web application that allows users to upload an Excel file, process it on the server, and download the processed file. The frontend is built using HTML, CSS, and JavaScript, while the backend is powered by Django.
 
