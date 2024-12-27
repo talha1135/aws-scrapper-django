@@ -129,3 +129,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
+APPEND_SLASH=False
